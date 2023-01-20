@@ -1,0 +1,51 @@
+<html>
+    <head>
+       <link rel="stylesheet" href="hwproject.css">
+       <style>
+        #cards{
+    display: flex;
+    
+    
+}
+.b{
+    height: 550px;
+width: 400px;
+text-align: center;
+border: 2px solid white;
+background-color:black;
+color:white;
+border-radius: 10px;
+padding-top: 10px;
+}
+img{
+    height: 250px;
+width: 250px;
+}
+       </style>
+    </head>
+    <body>
+        <div id="cards">
+            
+            
+    
+          </div>
+        <script>
+            let htmldata="";
+          fetch("https://fakestoreapi.com/products")
+          .then(data=>data.json())
+          .then(completedata=>{
+            completedata.map((obj1)=>{
+               htmldata=htmldata+` <div class="b">
+                <h2 class="c">${obj1.title}</h2>
+                <img src=${obj1.image}>
+            
+                <p>${obj1.description} </p>
+                <p>${obj1.category}</p>
+                <h3>${obj1.price}</h3></div>`
+            })
+            document.getElementById("cards").innerHTML=htmldata
+          })
+          
+        </script>
+    </body>
+</html>
